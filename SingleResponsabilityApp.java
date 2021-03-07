@@ -1,11 +1,14 @@
-/*Problema de Single Responsability
- * Cuando se calcula el iva y subtotal de una factura en un misma clase.
- * El problema es que si cambia en % del Iva se tiene que modificar toda la clase o si se quiere
- * cambiar el mensaje en consola o valores.
- * Imprime el total del iva y subtotal.
+/*Solucion de Single Responsability
+ * El Single Responsability dice que una clase debe tener una sola responsabilidad.
+ * Al separar el calculo del Iva y el Subtotal
+ * Y dejando en otra clase la impresion en consola de los datos
+ * cada clase tiene una sola responsabilidad si se quiere cambiar algo
+ * solo se hara en la clase necesaria sin modificar algo mas.
  */
 
-package SingleResponsability;
+package SingleResponsability.Soluction;
+
+import SingleResponsability.Factura;
 
 /**
  *
@@ -15,7 +18,11 @@ public class SingleResponsabilityApp {
     
     public static void main (String[]args){
         Factura Fac = new Factura();
-        System.out.println("Factura 1: " + Fac.ImprimirSubtotal(Fac.Subtotal(1000))+ " "+ Fac.ImprimirIva(Fac.IVA(1000)));
-        System.out.println("Factura 2: " + Fac.ImprimirSubtotal(Fac.Subtotal(1500))+ " "+ Fac.ImprimirIva(Fac.IVA(1500)));
+        IVA iva = new IVA();
+        
+        System.out.println("Factura 1: " + Fac.ImprimirIva(iva.IVA(1000)) );
+        System.out.println("Factura 1: " + Fac.ImprimirSubtotal(iva.Subtotal(1000)));
+        System.out.println("Factura 2: " + Fac.ImprimirIva(iva.IVA(1500)) );
     }
+    
 }
